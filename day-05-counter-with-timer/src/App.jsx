@@ -7,6 +7,7 @@ function App() {
   const ref = useRef(null);
   const style = { border: "1px solid black" };
   const handeStart = () => {
+    if (ref.current !== null) return;
     console.log("Inside Start handler");
     ref.current = setInterval(increment, 500);
     function increment() {
