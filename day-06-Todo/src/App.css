@@ -1,42 +1,46 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Input + Button in one row */
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* space between input & button */
+  margin-top: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Input */
+.task-input {
+  padding: 8px;
+  border-radius: 4px;
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Button */
+.add-button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+/* Error text */
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: left;
+  width: 260px; /* align with input width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.read-the-docs {
-  color: #888;
+/* Todo list */
+.task-list {
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+  
 }
