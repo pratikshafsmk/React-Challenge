@@ -50,7 +50,6 @@ function App() {
           <li key={i}>{item}</li>
         ))}
       </ul>
-      
     </>
   );
 }
