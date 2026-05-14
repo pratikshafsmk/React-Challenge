@@ -18,9 +18,7 @@ const RecipeFilterApp = () => {
   return (
     <div className="top-bar">
       <div>
-        <h1 style={{ textAlign: "center", padding: "10px" }}>
-          🍽️ Recipe Explorer
-        </h1>
+        <h1 style={{ textAlign: "center", padding: "10px" }}>🍽️ Menue 🍽️</h1>
         <div className="filter-section">
           <label htmlFor="filter">Filter by Rating: </label>
           <select
