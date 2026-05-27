@@ -40,8 +40,8 @@ h2 {
 /* ── Stats line ── */
 .top-bar > h2 {
   font-size: 15px;
-  font-weight: 400;
-  color: #555;
+  font-weight: bold;
+  color:black;
   margin-bottom: 1.25rem;
 }
 
@@ -57,17 +57,18 @@ h2 {
   background: #fff;
   border: 1px solid #e2e2e2;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
   transition: box-shadow 0.2s ease;
 }
 
 .card:hover {
-  border-color: #aaa;
+ /* ── border-color: #aaa; --*/
    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
@@ -76,28 +77,35 @@ h2 {
   width: 100%;
   height: 130px;
   object-fit: cover;
-  border-radius: 8px;
+ /* border-radius: 8px; */
   display: block;
 }
 
-.card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.3;
-  margin-top: 4px;
+.card-body {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;               /* takes remaining height */
 }
 
-.card p {
+.card-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+
+}
+
+.card-body p {
   font-size: 13px;
   color: #666;
 }
 
 /* ── Button pinned to bottom of each card ── */
-.card button {
-  margin-top: auto;
+.card-body button {
+  margin-top: auto; /* ← this is what pins the button to the bottom */
   width: 100%;
   padding: 8px 0;
-  margin-top: 8px;
+  
   border-radius: 8px;
   border: 1px solid #ccc;
   background: transparent;
@@ -108,6 +116,7 @@ h2 {
   color: white;
 }
 
-.card button:hover {
-  background: #f0f0f0;
+
+.card-body button:hover {
+  background:#246e24;
 }

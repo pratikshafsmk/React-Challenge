@@ -1,19 +1,52 @@
-import { useState } from "react";
-import { recipesData } from "../../utility/constants";
+import { useCallback, useMemo, useState } from "react";
+import { bigRecipes } from "../../utility/constants";
 import DishCard from "./DishCard";
+import { FixedSizeList } from "react-window";
+
+
+const Row = ({ index, style,data }) => {
+  const recipe = data[index];
+
+  return (
+    <div style={style}>
+      <h3>{recipe.title}</h3>
+    </div>
+  );
+};
 
 const RecipeFilterApp = () => {
+
+  console.log("RecipeFilterApp component rendered");
   const [filterValue, setFilterValue] = useState(4.0);
   const [cartCount, setCartCount] = useState(0);
-  const increaseCartValue = () => {
+
+  const increaseCartValue = useCallback(() => {
     setCartCount((prev) => prev + 1);
-  };
+    console.log("prop as function ,Cart count increased:");
+  }, []);
 
-  const filteredRating = recipesData.filter(
-    (dishRate) => dishRate.rating >= filterValue,
-  );
+  const filteredRating = useMemo(() => {
+    console.log(
+      "Filter function called. Filtered dishes based on rating:",
+      filterValue,
+    );
+    const filteredDishes = bigRecipes.filter(
+      (dishRate) => dishRate.rating >= filterValue,
+    );
+    const totalRating = filteredDishes.reduce(
+      (acc, curr) => acc + curr.rating,
+      0,
+    );
+    const avgRating =
+      filteredDishes.length > 0 ? totalRating / filteredDishes.length : 0;
 
-  const avgRating = filteredRating.reduce((acc, curr) => acc + curr.rating, 0);
+    return {
+      filterDish: filteredDishes,
+      avgRate: avgRating,
+    };
+  }, [filterValue]);
+
+  //console.log("Reduce function called. Average rating:", avgRating);
 
   return (
     <div className="top-bar">
@@ -38,15 +71,15 @@ const RecipeFilterApp = () => {
       </div>
 
       <h2>
-        Average Rating: {(avgRating / filteredRating.length).toFixed(2)} (
-        {filteredRating.length}recepies)
+        Average Rating: {filteredRating.avgRate.toFixed(2)} (
+        {filteredRating.filterDish.length} recipes)
       </h2>
 
       <div className="recipe-container">
-        {filteredRating.map((dish) => (
+        {filteredRating.filterDish.map((dish) => (
           <DishCard
             key={dish.id}
-            recipesData={dish}
+            bigRecipes={dish}
             increaseCartValue={increaseCartValue}
           />
         ))}

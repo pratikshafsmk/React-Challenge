@@ -1,4 +1,4 @@
-
+console.log("constants file loaded");
 export const recipesData = [
   {
     id: 1,
@@ -81,3 +81,8 @@ export const recipesData = [
     reviewCount: 5,
   },
 ];
+
+export const bigRecipes = Array.from({ length: 5000 }, (_, i) => ({
+  ...recipesData[i % recipesData.length],
+  id: i,
+}));

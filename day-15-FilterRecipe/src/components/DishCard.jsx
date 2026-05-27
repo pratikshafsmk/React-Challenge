@@ -1,20 +1,18 @@
-const DishCard = ({ recipesData, increaseCartValue }) => {
+import React from "react";
+const DishCard = ({ bigRecipes, increaseCartValue }) => {
+  console.log("DishCard component rendered");
   return (
-    <div style={{ border: "1px solid black" }} className="card">
-      <div>
-        <img
-          className="card-img"
-          style={{ width: "50px", height: "50px" }}
-          src={recipesData.image}
-        />
+    <div className="card">
+      <img className="card-img" src={bigRecipes.image} />
+      <div className="card-body">
+        <h3>{bigRecipes.name}</h3>
+        <p>🍴 Cuisinie :{bigRecipes.cuisine}</p>
+        <p>
+          ⭐Rating:{bigRecipes.rating}({bigRecipes.reviewCount} reviews){" "}
+        </p>
+        <button onClick={increaseCartValue}>Add to Cart</button>
       </div>
-      <h3>{recipesData.name}</h3>
-      <p>🍴 Cuisinie :{recipesData.cuisine}</p>
-      <p>
-        ⭐Rating:{recipesData.rating}({recipesData.reviewCount} reviews){" "}
-      </p>
-      <button onClick={increaseCartValue}>Add to Cart</button>
     </div>
   );
 };
-export default DishCard;
+export default React.memo(DishCard);

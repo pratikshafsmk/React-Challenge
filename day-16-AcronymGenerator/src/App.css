@@ -1,0 +1,7 @@
+/* Global font import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+
+.container { max-width: 480px; margin: auto; padding: 2.5rem 2rem; }
+h1 { font-family: 'Playfair Display', serif; font-size: 26px; }
+input, button { font-family: 'DM Mono', monospace; }
+/* etc. */
